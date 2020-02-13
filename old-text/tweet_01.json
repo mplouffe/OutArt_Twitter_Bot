@@ -1,0 +1,47 @@
+{
+    "tweet": {
+        "config": {
+            "numberOfElements": 12,
+            "sample": "A web app that uses blockchain to decrease development time"
+        },
+        "elements": [
+            [
+                "A web app ",
+                "A desktop application ",
+                "A mobile app ",
+                "A tool ",
+                "A high level system ",
+                "Some low level middleware ",
+                "An API ",
+                "A cloud based app "
+            ],
+            [
+                "that uses "
+            ],
+            [
+                "Bitcoin ",
+                "blockchain technologies ",
+                "growth hacking ",
+                "data mining ",
+                "big data ",
+                "machine learning ",
+                "neural networks ",
+                "procedural generation ",
+                "ray tracing ",
+                "voxels "
+            ],
+            [
+                "to "
+            ],
+            [
+                "render high resolution images.",
+                "decimate meshes.",
+                "design levels.",
+                "create story content.",
+                "generate NPCs.",
+                "render art assets.",
+                "produce bigger open worlds."
+            ]
+        ]
+    }
+}
