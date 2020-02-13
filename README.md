@@ -3,3 +3,5 @@
 #### v 1.0.0 - Art Generating Bot
 
 Creating a art generating bot that will tweet generated images.
+
+Made with :blue_heart:
