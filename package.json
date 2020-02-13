@@ -1,7 +1,7 @@
 {
-  "name": "innovation-daze-bot",
+  "name": "out-art-bot",
   "version": "1.0.0",
-  "description": "Nodejs Twitter Bot.",
+  "description": "Nodejs Image generation Twitter Bot.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
