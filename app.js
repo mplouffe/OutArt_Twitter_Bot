@@ -1,7 +1,7 @@
 require('./config/config');
 const express = require('express');
 const Twitter = require('twitter');
-const { generateTextTweet } = require('./text-tweet-generator/tweet-generator');
+const { generateTextTweet } = require('./image-title-generator/tweet-generator');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -29,4 +29,4 @@ setInterval(() => {
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 
-app.listen(PORT, () => console.log(`Rnd Encounter up and running on ${PORT}`));
+app.listen(PORT, () => console.log(`OutArt up and running on ${PORT}`));
