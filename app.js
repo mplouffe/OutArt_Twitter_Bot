@@ -1,4 +1,6 @@
 require('./config/config');
+const { generateImage } = require('./image-generator/image_manipulation')
+
 const express = require('express');
 const Twitter = require('twitter');
 const { generateTextTweet } = require('./image-title-generator/tweet-generator');
@@ -13,19 +15,21 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-setInterval(() => {
-    generateTextTweet()
-        .then((status) => {
-            console.log(status);
-            return client.post('statuses/update', { status: status });
-        })
-        .then((tweet) => {
-            console.log('Successful tweet!')
-        })
-        .catch((err) => {
-            console.log('ERR!: ', err);
-        });
-}, 28800000);
+// setInterval(() => {
+//     generateTextTweet()
+//         .then((status) => {
+//             console.log(status);
+//             return client.post('statuses/update', { status: status });
+//         })
+//         .then((tweet) => {
+//             console.log('Successful tweet!')
+//         })
+//         .catch((err) => {
+//             console.log('ERR!: ', err);
+//         });
+// }, 28800000);
+
+generateImage();
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 
