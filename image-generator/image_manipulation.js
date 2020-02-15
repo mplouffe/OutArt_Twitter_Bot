@@ -3,6 +3,148 @@ const GoogleImages = require('google-images');
 
 require('../config/config');
 
+var tetrisTiles = [
+    {
+        name: "I",
+        totalSize: {
+            width: 4,
+            height: 1
+        },
+        totalPieces: 1,
+        pieces: [
+            {
+                width: 4,
+                height: 1
+            }
+        ]
+    },
+    {
+        name: "O",
+        totalSize: {
+            width: 2,
+            height: 2
+        },
+        totalPieces: 1,
+        pieces: [
+            {
+                width: 2,
+                height: 2
+            }
+        ]
+    },
+    {
+        name: "T",
+        totalSize: {
+            width: 3,
+            height: 2
+        },
+        totalPieces: 2,
+        pieces: [
+            {
+                width: 3,
+                height: 1,
+            },
+            {
+                width: 1,
+                height: 2,
+                offset: {
+                    x: 1,
+                    y: -1
+                }
+            }
+        ]
+    },
+    {
+        name: "S",
+        totalSize: {
+            width: 3,
+            height: 2
+        },
+        totalPieces: 2,
+        pieces: [
+            {
+                width: 2,
+                height: 1
+            },
+            {
+                width: 2,
+                height: 1,
+                offset: {
+                    x: 1,
+                    y: 1
+                }
+            }
+        ]
+    },
+    {
+        name: "Z",
+        totalSize: {
+            width: 3,
+            height: 2
+        },
+        totalPieces: 2,
+        pieces: [
+            {
+                width: 2,
+                height: 1
+            },
+            {
+                width: 2,
+                height: 1,
+                offset: {
+                    x: -1,
+                    y: 1
+                }
+            }
+        ]
+    },
+    {
+        name: "J",
+        totalSize: {
+            width: 2,
+            height: 3
+        },
+        totalPieces: 2,
+        pieces: [
+            {
+                width: 1,
+                height: 1
+            },
+            {
+                width: 1,
+                height: 3,
+                offset: {
+                    x: 1,
+                    y: -2
+                }
+            }
+        ]
+    },
+    {
+        name: "L",
+        totalSize: {
+            width: 2,
+            height: 3
+        },
+        totalPieces: 2,
+        pieces: [
+            {
+                width: 1,
+                height: 3
+            },
+            {
+                width: 1,
+                height: 1,
+                offset: {
+                    x: 1,
+                    y: 2
+                }
+            }
+        ]
+    }
+
+]
+
 const generateImage = () => {
     let cseId = process.env.CLIENT_ID;
     let apiKey = process.env.CSE_API_KEY;
@@ -24,7 +166,6 @@ const generateImage = () => {
         .then(images => {
             if (images.length > 0) {
                 let index = Math.floor(Math.random() * images.length);
-                console.log(index);
                 return Jimp.read(images[index].url);
             }
         })
