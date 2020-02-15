@@ -13,28 +13,35 @@ const generateImage = () => {
     Jimp.read('./images/tetrisPiece_01.png')
         .then( tetrisPiece => {
             tp = tetrisPiece;
-            client.search('boots', {
-                page: 3,
+            return client.search('puppy', {
+                page: 1,
                 size: "medium",
                 type: "photo",
-                dominantColor: "brown",
+                // dominantColor: "brown",
                 colorType: "color"
-            })
-            .then(images => Jimp.read(images[1].url))
-            .then(image => {
-                image.crop(0,0,235, 65);
+            });
+        })
+        .then(images => {
+            if (images.length > 0) {
+                let index = Math.floor(Math.random() * images.length);
+                console.log(index);
+                return Jimp.read(images[index].url);
+            }
+        })
+        .then(image => {
+            if (image) {
+                let x = Math.floor(Math.random() * (image.getWidth() - tp.getWidth()));
+                let y = Math.floor(Math.random() * (image.getHeight() - tp.getHeight()));;
+                image.crop(x,y, tp.getWidth(), tp.getHeight());
                 image.mask(tp, 0, 0);
                 image.write("./images/copositeOut.jpg");
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            } else {
+                console.log("No image results returned");
+            }
         })
         .catch(err => {
             console.log(err);
-        });
-
-    
+        });    
     
 }
 
