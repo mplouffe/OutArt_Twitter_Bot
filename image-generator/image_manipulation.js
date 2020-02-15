@@ -6,16 +6,36 @@ require('../config/config');
 const generateImage = () => {
     let cseId = process.env.CLIENT_ID;
     let apiKey = process.env.CSE_API_KEY;
-    
+
     const client = new GoogleImages(cseId, apiKey);
-    
-    client.search('Steve Angello')
-        .then(images => {
-            console.log(images);
+    var tp;
+
+    Jimp.read('./images/tetrisPiece_01.png')
+        .then( tetrisPiece => {
+            tp = tetrisPiece;
+            client.search('boots', {
+                page: 3,
+                size: "medium",
+                type: "photo",
+                dominantColor: "brown",
+                colorType: "color"
+            })
+            .then(images => Jimp.read(images[1].url))
+            .then(image => {
+                image.crop(0,0,235, 65);
+                image.mask(tp, 0, 0);
+                image.write("./images/copositeOut.jpg");
+            })
+            .catch(err => {
+                console.log(err);
+            });
         })
         .catch(err => {
             console.log(err);
         });
+
+    
+    
 }
 
 // Jimp.read('./DWLandTiles_nogap.png')
