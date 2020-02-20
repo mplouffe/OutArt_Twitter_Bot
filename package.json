@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "google-images": "^2.1.0",
+    "html-element": "^2.3.1",
     "jimp": "^0.3.11",
     "node-html-to-image": "^1.1.0",
     "pngjs-image": "^0.11.7",
