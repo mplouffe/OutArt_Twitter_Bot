@@ -1,9 +1,10 @@
 require('./config/config');
-const { generateImage } = require('./image-generator/image_manipulation')
+const { generateCollage } = require('./image-generator/image_manipulation')
+const { generateImage } = require('./image-generator/image_generation')
 
 const express = require('express');
 const Twitter = require('twitter');
-const { generateTextTweet } = require('./image-title-generator/tweet-generator');
+
 
 const app = express();
 const PORT = process.env.PORT;

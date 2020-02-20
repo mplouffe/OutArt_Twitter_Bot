@@ -145,7 +145,7 @@ var tetrisTiles = [
 
 ]
 
-const generateImage = () => {
+const generateCollage = () => {
     let cseId = process.env.CLIENT_ID;
     let apiKey = process.env.CSE_API_KEY;
 
@@ -202,4 +202,4 @@ const generateImage = () => {
 //         return newImage.write('test-output.jpg');
 //     });
 
-module.exports = { generateImage };
+module.exports = { generateCollage };
