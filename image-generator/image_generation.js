@@ -1,13 +1,8 @@
 const nodeHtmlToImage = require('node-html-to-image');
-const Element = require('html-element');
 
 const generateImage = () => {
     let htmlNode = {
-        html: {
-            body: {
-                text: "Hello World!"
-            }
-        }
+        body: "Hello World!!!"
     };
     // let document = Element.document;
     // let htmlNode = document.createElement('html');

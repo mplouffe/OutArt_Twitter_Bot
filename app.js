@@ -1,13 +1,14 @@
 require('./config/config');
 const { generateCollage } = require('./image-generator/image_manipulation')
 const { generateImage } = require('./image-generator/image_generation')
+const { generateHtmlImage } = require('./image-generator/html_image_generation')
 
 const express = require('express');
 const Twitter = require('twitter');
 
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 const client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -30,7 +31,7 @@ const client = new Twitter({
 //         });
 // }, 28800000);
 
-generateImage();
+generateHtmlImage();
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 
