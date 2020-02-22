@@ -21,8 +21,9 @@ const generateHtmlImage = () => {
         }]
     };
 
-    let htmlNode = compile(complexTag);
+    // let htmlNode = compile(complexTag);
 
+    let htmlNode = '<style> .test { width:50%;height:50%;background-color:blue; }</style><div class="test"></div>';
     console.log(htmlNode);
 
     nodeHtmlToImage({
