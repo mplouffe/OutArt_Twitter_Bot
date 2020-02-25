@@ -33,18 +33,26 @@ const client = new Twitter({
 // }, 28800000);
 
 generateHtmlImage();
-generateImageTweet()
-    .then((status) => {
-        console.log(status);
-        // return client.post('statuses/update', { status: status });
-    })
-    .then((tweet) => {
-        console.log('Successful tweet!');
-    })
-    .catch((err) => {
-        console.log('ERR!: ', err);
-    });
+// generateImageTweet()
+//     .then((status) => {
+//         console.log(status);
+//         // return client.post('statuses/update', { status: status });
+//     })
+//     .then((tweet) => {
+//         console.log('Successful tweet!');
+//     })
+//     .catch((err) => {
+//         console.log('ERR!: ', err);
+//     });
 
+//     client.post("media/upload", {media: imageData}, function(error, media, response) {
+//         if (error) {
+//           console.log(error)
+//         } else {
+//           const status = {
+//             status: "I tweeted from Node.js!",
+//             media_ids: media.media_id_string
+//           }
 app.get('/', (req, res) => res.send('Bot is running...'));
 
 app.listen(PORT, () => console.log(`OutArt up and running on ${PORT}`));

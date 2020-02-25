@@ -4,8 +4,8 @@ const compile = require('hyperjs').compile;
 var canvasWidth, canvasHeight;
 
 const generateCanvas = (backgroundColor) => {
-    canvasWidth = getRandomArbitrary(100, 400);
-    canvasHeight = getRandomArbitrary(100, 400);
+    canvasWidth = 400; // getRandomArbitrary(100, 400);
+    canvasHeight = 400; // getRandomArbitrary(100, 400);
 
     return 'background-color:' + backgroundColor + '; width:' + canvasWidth + 'px; height:' + canvasHeight + 'px;';
 }
@@ -82,8 +82,8 @@ const generateHtmlImage = () => {
     let primaryColor = getRandomColor();
     let secondaryColor = getRandomColor();
 
-    let primaryElementsCount = getRandomArbitrary(3, 8);
-    let secondaryElementsCount = getRandomArbitrary(3, 8);
+    let primaryElementsCount = 5; //getRandomArbitrary(3, 8);
+    let secondaryElementsCount = 3; //getRandomArbitrary(3, 8);
 
     var complexTag = {
         tag: 'body',
