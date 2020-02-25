@@ -2,6 +2,7 @@ require('./config/config');
 const { generateCollage } = require('./image-generator/image_manipulation')
 const { generateImage } = require('./image-generator/image_generation')
 const { generateHtmlImage } = require('./image-generator/html_image_generation')
+const { generateImageTweet } = require('./image-title-generator/tweet-generator')
 
 const express = require('express');
 const Twitter = require('twitter');
@@ -32,6 +33,17 @@ const client = new Twitter({
 // }, 28800000);
 
 generateHtmlImage();
+generateImageTweet()
+    .then((status) => {
+        console.log(status);
+        // return client.post('statuses/update', { status: status });
+    })
+    .then((tweet) => {
+        console.log('Successful tweet!');
+    })
+    .catch((err) => {
+        console.log('ERR!: ', err);
+    });
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 

@@ -29,4 +29,8 @@ const generateTextTweet = () => {
     });
 };
 
+const generateImageTweet = () => {
+    
+}
+
 module.exports = { generateTextTweet };
