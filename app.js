@@ -4,6 +4,7 @@ const { generateImage } = require('./image-generator/image_generation')
 const { generateHtmlImage } = require('./image-generator/html_image_generation')
 const { generateImageTweet } = require('./image-title-generator/tweet-generator')
 
+const fs = require('fs')
 const express = require('express');
 const Twitter = require('twitter');
 
@@ -44,15 +45,27 @@ generateHtmlImage();
 //     .catch((err) => {
 //         console.log('ERR!: ', err);
 //     });
+const imageData = fs.readFileSync("./image.png");
 
-//     client.post("media/upload", {media: imageData}, function(error, media, response) {
-//         if (error) {
-//           console.log(error)
-//         } else {
-//           const status = {
-//             status: "I tweeted from Node.js!",
-//             media_ids: media.media_id_string
-//           }
+client.post("media/upload", {media: imageData}, function(error, media, response) {
+    if (error) {
+      console.log(error)
+    } else {
+      const status = {
+        status: "I tweeted from Node.js!",
+        media_ids: media.media_id_string
+      }
+   
+      client.post("statuses/update", status, function(error, tweet, response) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log("Successfully tweeted an image!")
+        }
+      })
+    }
+  });
+
 app.get('/', (req, res) => res.send('Bot is running...'));
 
 app.listen(PORT, () => console.log(`OutArt up and running on ${PORT}`));
