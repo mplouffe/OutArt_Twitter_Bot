@@ -12,18 +12,16 @@ const Twitter = require('twitter');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-let twitterKeys = process.env.OUT_ART_BOT_TWITTER_KEYS;
-console.log(twitterKeys.consumer_key);
 
 const client = new Twitter({
-    consumer_key: process.env.OUT_ART_BOT_TWITTER_KEYS.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.OUT_ART_BOT_TWITTER_KEYS.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.OUT_ART_BOT_TWITTER_KEYS.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.OUT_ART_BOT_TWITTER_KEYS.TWITTER_ACCESS_TOKEN_SECRET
+    consumer_key: process.env.OUT_ART_BOT_TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.OUT_ART_BOT_TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.OUT_ART_BOT_TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.OUT_ART_BOT_TWITTER_ACCESS_TOKEN_SECRET
 });
 
 // Tweet Scheduler Process:
-// -1) Get list or registered twitter bots
+// -1) Get list of registered twitter bots
 // 0) Pull list of most recent tweets for registered twitter bots
 // 1) Check configurations for next scheduled tweet intervals
 // 2) Check configurations for one off scheduled tweets
@@ -59,24 +57,24 @@ generateHtmlImage();
 //     });
 const imageData = fs.readFileSync("./image.png");
 
-// client.post("media/upload", {media: imageData}, function(error, media, response) {
-//     if (error) {
-//       console.log(error)
-//     } else {
-//       const status = {
-//         status: "I tweeted from Node.js!",
-//         media_ids: media.media_id_string
-//       }
+client.post("media/upload", {media: imageData}, function(error, media, response) {
+    if (error) {
+      console.log(error)
+    } else {
+      const status = {
+        status: "I tweeted from Node.js!",
+        media_ids: media.media_id_string
+      }
    
-//       client.post("statuses/update", status, function(error, tweet, response) {
-//         if (error) {
-//           console.log(error)
-//         } else {
-//           console.log("Successfully tweeted an image!")
-//         }
-//       })
-//     }
-//   });
+      client.post("statuses/update", status, function(error, tweet, response) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log("Successfully tweeted an image!")
+        }
+      })
+    }
+  });
 
 app.get('/', (req, res) => res.send('Bot is running...'));
 
