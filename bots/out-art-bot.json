@@ -1,0 +1,14 @@
+{
+    "name": "Out_Art_Bot",
+    "description": "Bot that procedurally generates art and tweets it.",
+    "credentials": {
+        "consumer_key": "OUT_ART_BOT_TWITTER_CONSUMER_KEY",
+        "consumer_secret": "OUT_ART_BOT_TWITTER_CONSUMER_SECRET",
+        "access_token_key": "OUT_ART_BOT_TWITTER_ACCESS_TOKEN_KEY",
+        "access_token_secret": "OUT_ART_BOT_TWITTER_ACCESS_TOKEN_SECRET"
+    },
+    "schedule": {
+        "function": "outArtTweet",
+        "interval": 8
+    }
+}
